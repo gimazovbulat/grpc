@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package greet;
+
+option java_package = "ru.itis.education.grpc.proto.calculation";
+option java_multiple_files = true;
+
+message NumberRequest {
+  double number = 1;
+};
+
+message NumberResponse {
+  double number = 1;
+};
+
+service CalculationService {
+  rpc GetSQRT(NumberRequest) returns (NumberResponse) {};
+
+  rpc GetSTD(stream NumberRequest) returns (NumberResponse) {};
+
+  rpc GetDivisors(NumberRequest) returns (stream NumberResponse) {};
+
+  rpc GetUpdatedMax (stream NumberRequest) returns (stream NumberResponse) {};
+};
